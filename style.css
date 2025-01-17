@@ -1,0 +1,1008 @@
+/* STYLE GLOBAL*/
+
+* {
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: "Noto Sans HK", sans-serif;
+}
+
+body {
+    background-color: #FFF5ED; 
+}
+
+
+/* Styles THEME BLEU ALTERNATIF */
+.theme-alternatif {
+    background-color: #EEF3FA;
+}
+.theme-alternatif .accueil {
+    background-image: url('images/blue_theme.png');
+}
+.theme-alternatif .bouton_catalogue,
+.theme-alternatif .recherche input[type="submit"], 
+.theme-alternatif .page_connection .connection form input[type="submit"],
+.theme-alternatif .espace_membre .container button, 
+.theme-alternatif .page_kdrama input[type="submit"],
+.theme-alternatif .container.page_kdrama input[type="submit"],
+.theme-alternatif .popup_page button,
+.theme-alternatif .generateur-kdrama #bouton_ouvrir {
+    background-color: #BACADF;
+    color: black;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.theme-alternatif .bouton_catalogue:hover,
+.theme-alternatif .recherche input[type="submit"]:hover,
+.theme-alternatif .page_connection .connection form input[type="submit"]:hover,
+.theme-alternatif .espace_membre .container button:hover, 
+.theme-alternatif .page_kdrama input[type="submit"]:hover,
+.theme-alternatif .container.page_kdrama input[type="submit"]:hover,
+.theme-alternatif .popup_page button:hover {
+    background-color: #555;
+    color: white;
+}
+
+.theme-alternatif #precedent,
+.theme-alternatif #suivant,
+.theme-alternatif #themeControleur:hover,
+.theme-alternatif .recherche h1,
+.theme-alternatif .deconnexion {
+    color: #BACADF;
+}
+.theme-alternatif .recherche input[type="text"],
+.theme-alternatif .conainer_formulaire .champs_nom input[type="text"],
+.theme-alternatif .espace_membre .container input[type="text"], 
+.theme-alternatif .espace_membre .container input[type="email"], 
+.theme-alternatif .espace_membre .container select,
+.theme-alternatif .generateur-kdrama input[type="text"]  {
+    border: 2px solid #BACADF; 
+}
+
+
+.theme-alternatif .filtres,
+.theme-alternatif .conainer_formulaire {
+    background-color: #BACADF;
+}
+
+
+.theme-alternatif .conainer_formulaire .champs_nom input[type="text"],
+.theme-alternatif .espace_membre .container input[type="text"], input[type="email"], select  {
+    border: 2px solid #BACADF; 
+}
+
+.theme-alternatif .conainer_formulaire .champs_nom input[type="text"]:focus {
+    border-color: #a3bee2; 
+}
+/* FIN THEME BLEU ALTERNATIF */
+
+
+
+                                                                /* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap; /* Empêche les éléments de passer à la ligne suivante */
+    padding: 1% 5%; 
+    height: 150px;
+}
+
+.header-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-section.left, .header-section.right, .header-section.center {
+    flex: 1; /* Donne à chaque section la possibilité de prendre un espace égal */
+}
+
+.header-section.right {
+    justify-content: flex-end; 
+}
+
+
+/* theme controleur (coeur) */
+
+/* animation secoue */
+@keyframes shake {
+    0%, 7%, 100% { transform: translateY(0); }
+    1% { transform: translateY(-5px); }
+    3% { transform: translateY(5px); }
+    5% { transform: translateY(-5px); }
+    7% { transform: translateY(5px); }
+}
+.icon-heart {
+    display: inline-block;
+    animation: shake 10s infinite; 
+  }
+#themeControleur {
+    background-color: transparent; 
+    border: none; 
+    cursor: pointer; 
+    font-size: 35px; 
+    color: black; 
+}
+#themeControleur:hover {
+    color: #FFE2D4; /* Couleur de survol pour le thème initial */
+}
+
+
+/* LOGO CENTRE */
+.header-section.center {
+    flex: 2; /* Permet au centre (logo) d'occuper plus d'espace */
+    justify-content: center; 
+}
+
+.logo {
+    width: 250px; 
+    height: auto;
+}
+.logo video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* navigation droite */
+header ul {
+    display: flex;
+    gap: 40px; 
+}
+
+header ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+header ul li a:hover {
+    color: #555;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Style du bouton hamburger pour petits écrans */
+.hamburger {
+    display: none; /* Masqué par défaut */
+    cursor: pointer;
+    font-size: 30px; 
+    background: none; 
+    border: none; 
+    color: inherit; 
+    z-index: 2;
+}
+/* responsive */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    .header-section.right ul {
+        display: none; 
+    }
+    .fullscreen-nav.active ul {
+        display: block;
+    }
+}
+
+/* style oour le full screen de la navigation du menu hamburger */
+.fullscreen-nav {
+    display: none; /* commence caché */
+    position: fixed; /* Se place par-dessus le contenu de la page */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(37, 37, 37, 0.9); 
+    color: #fff;
+    z-index: 9999;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    overflow-y: auto; 
+}
+/* Style pour le bouton de fermeture */
+#close-btn {
+    cursor: pointer;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #fff; 
+    position: absolute; 
+    top: 20px;
+    right: 20px;
+}
+
+/* style pour les elements de navigation du full scren */
+.fullscreen-nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center; 
+}
+.fullscreen-nav ul li {
+    margin: 25px 0; 
+}
+.fullscreen-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2vw;
+    padding: 10px 20px; 
+    margin: 5px;
+    border-radius: 5px; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+.fullscreen-nav ul li a:hover, .fullscreen-nav ul li a:focus {
+    background-color: #ffffff; 
+    color: #333; 
+}
+.fullscreen-nav.active {
+    display: flex;
+}
+
+
+
+                                                                        /* PAGE ACCUEIL */
+/*  disposition du fond cover de la page d'accueil*/
+.accueil {
+    position: relative;
+    min-height: 100vh;
+    background-image: url('images/background1.png');
+    background-size: cover; 
+    background-position: center; 
+}
+
+.accueil_container {
+    display: flex;
+    justify-content: space-between;
+    min-height: calc(100vh - 150px); 
+    overflow: hidden; 
+}
+
+/* style du texte gauche */
+.left_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    padding-left: 5%; 
+    flex: 1; 
+    max-width: 45%; 
+    align-items: flex-start;
+}
+.left_text p {
+    font-size: 5vw;
+    transform: translateY(-25%); 
+}
+
+/* pour le bouton call to action */
+.bouton_catalogue {
+    background-color: #FFE2D4;
+    color: black; 
+    border: none; 
+    padding: 15px 20px; 
+    font-size: 1.2vw; 
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.3s; 
+}
+.bouton_catalogue:hover {
+    background-color: #555;
+    color: white;
+    transform: scale(1.05); 
+}
+.bouton_catalogue:active {
+    transform: scale(0.95); 
+}
+
+
+/* preparation du terrain pour la carouselle */
+.right_content {
+    position: relative; 
+    flex: 1; /* Permet à right_content de prendre l'espace restant */
+    display: flex; 
+    align-items: center; /* Centre verticalement les images */
+    justify-content: flex-end; 
+    padding-right: 20px; 
+}
+.image_carouselle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0vh;
+    right: 0vw;
+    width: 60vw; 
+}
+/* taille image */
+.image_carouselle img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain; 
+}
+
+/* reponsivite des images */
+@media (max-width: 768px) {
+    .image_carouselle img {
+        width: 70%; /* Réduit la largeur de l'image à 80% de celle de son conteneur */
+        height: auto; /* Ajuste la hauteur automatiquement */
+    }
+}
+
+
+/* style des controleurs de carouselle (fleche) */
+.carouselle_controls {
+    display: flex; /* Place les boutons côte à côte */
+    position: absolute; 
+    right: 0; 
+    top: 30%; 
+    transform: translateY(-50%); /* Ajuste pour centrer parfaitement les contrôles */
+    gap: 10px;
+    padding-right: 20%;
+}
+#precedent, #suivant {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 3vw; /* Ajuste la taille des icônes pour les rendre plus visibles */
+    color: #FFE2D4; /* Couleur des icônes */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Ajoute une ombre noire semi-transparente */
+}
+#precedent:hover, #suivant:hover {
+    color: #555; 
+}
+
+
+
+
+
+                                                             /*CATALOGUE PAGE  */
+
+                                                            
+.catalogue_page {
+    padding: 3% 5%; 
+}
+/* Centrer la classe recherche et disposer ses enfants verticalement */
+.recherche {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin: auto; 
+    gap: 20px; 
+}
+.recherche form {
+    margin-bottom: 20px;
+}
+.recherche h1{
+    color: #FFE2D4 ;
+    text-shadow: 1px 1px 2px #6a6969; 
+}
+
+
+
+/* STYLE GLOBAL DES ELEMENT DE RECHERCHE */
+.barreRecherche {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; /* Disposer les éléments en colonne */
+    width: 100%; 
+}
+
+.barreRecherche form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between; /* Aligner les éléments aux extrémités du conteneur */
+    width: 95%; 
+    max-width: 600px; 
+}
+
+.recherche input[type="text"] {
+    padding: 0% 5%;
+    margin-right: 10px; /* Ajouter un peu d'espace entre le champ de texte et le bouton */
+    border: 3px solid #FFE2D4;
+    border-radius: 25px;
+    width: 100%; 
+    box-sizing: border-box;
+    flex-grow: 1;
+}
+
+.recherche input[type="submit"] {
+    padding: 2% 5%;
+    border-radius: 25px;
+    cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+    flex-shrink: 0; /* Empêche le bouton de rétrécir */
+}
+
+
+/* STYLE DU FILTRE */
+.filtres {
+    width: 100%; 
+    display: flex; 
+    flex-direction: row; /* Assure une disposition horizontale */
+    flex-wrap: wrap; 
+    justify-content: center; /* Centre les boutons horizontalement */
+    gap: 10px; 
+    padding: 10px; 
+    box-sizing: border-box;
+    background-color: #FFE2D4;
+    border-radius: 25px;
+    margin-bottom: 20px;
+}
+.filtreGenre {
+    display: flex; 
+    flex: 1; /* Permet au formulaire de filtre de grandir et de remplir l'espace */
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 10px;
+}
+.filtreGenre button {
+    font-size: 1.2em; 
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center; 
+    margin: 5px; 
+    transition: all 0.3s ease; 
+}
+.filtreGenre button:hover {
+    transform: scale(1.1); /* Agrandit le bouton de 10% lors du survol */
+}
+
+/* Style spécifique pour le bouton "All" */
+.filtreGenre button[name="tousLesGenres"].selected,
+.filtreGenre button[name="tousLesGenres"]:hover {
+    font-weight: bold; /* Rend le texte du bouton gras */
+    background-color: #555; /* Couleur de fond lorsqu'il est sélectionné ou survolé */
+    color: white; /* Couleur du texte */
+}
+.filtreGenre button[name="tousLesGenres"] {
+    font-weight: bold; /* Rend le texte du bouton gras même lorsqu'il n'est pas sélectionné */
+}
+
+/* Style global du catalogue de kdramas */
+.catalogue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.catalogue-wrapper {
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    justify-content: center; /* Centre les éléments si ils n'occupent pas toute la largeur */
+}
+
+/* Style des éléments individuels du catalogue */
+.catalogue-item .image-container {
+    position: relative;
+    width: auto;
+    max-width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.catalogue-item .image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 0.5s ease;
+}
+
+/* Style des images pour garantir le maintien du ratio */
+.catalogue img {
+    width: auto;
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* Style de l'overlay (effet de survol) */
+.catalogue-item .image-container .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0; 
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    transition: height 0.5s ease;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+}
+
+.catalogue-item .image-container:hover .overlay {
+    height: 100%;
+}
+
+/* Style du texte sur l'overlay */
+.catalogue-item .image-container .overlay .text {
+    color: white;
+    font-size: 1em;
+    text-align: center;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.catalogue-item .image-container:hover .overlay .text {
+    opacity: 1;
+}
+
+/* Style de la section de recommandation */
+.recommandation {
+    margin-top: 12%;
+}
+
+.recommandation p {
+    color: black;
+    font-size: 1.3vw;
+    margin-bottom: 20px;
+}
+
+.recommandation hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.recommandation-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Style des images dans la section de recommandation */
+.recommandation .catalogue img {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.recommandation .catalogue img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+
+
+                                                        /* PAGE KDRAMA INDIVIDUELLE */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* keyframes pour l'animation d'entrée, rend l'apparition plus douce */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* style pour l'en-tête du kdrama, centré avec une marge en dessous */
+.kdrama_header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ajuste l'image du kdrama pour qu'elle s'adapte bien */
+.kdrama_thumbnail {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+/* ajustements pour le titre du kdrama */
+.kdrama_header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+/* styles pour les sections détails et critiques, avec un petit trait en dessous du titre */
+.kdrama_details h2, .critiques_section h2 {
+    color: #444;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* espacement pour les paragraphes dans les détails et critiques */
+.kdrama_details p, .critique p {
+    margin: 10px 0;
+}
+
+/* fond pour chaque critique, un peu d'ombre pour du relief */
+.critique {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* le formulaire pour ajouter une critique, centré */
+.ajout_critique_form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* marge au-dessus du formulaire */
+.ajout_critique_form form {
+    margin-top: 20px;
+}
+
+/* styles pour le textarea et le select dans le formulaire */
+.ajout_critique_form textarea, 
+.ajout_critique_form select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+}
+
+/* quand l'élément est en focus, pas de contour */
+.ajout_critique_form textarea:focus, 
+.ajout_critique_form select:focus {
+    outline: none;
+}
+
+/* les labels sont affichés en bloc avec une petite marge en dessous */
+.ajout_critique_form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* ajustements pour les petits écrans, moins de marge et image plus petite */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+    }
+
+    .kdrama_thumbnail {
+        width: 150px;
+        height: 225px;
+    }
+}
+
+
+                                                        /* PAGE GENERATEUR DRAMA */
+
+
+/* Styles de base pour le conteneur de formulaire */
+.generateur-kdrama .container_formulaire {
+    max-width: 600px;
+    background-color: #fff; 
+    padding: 30px; 
+    border-radius: 15px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre */
+    margin: 30px auto; 
+}
+/* style du titre */
+.generateur-kdrama .texte_formulaire h1 {
+    color: #333; 
+    margin-bottom: 25px; /* Espace après le titre */
+    text-align: center;
+}
+
+/* Styles pour les champs de saisie */
+.generateur-kdrama .champs_nom, .generateur-kdrama .champs_genre {
+    margin-bottom: 20px; /* Espacement uniforme entre les éléments */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alignement à gauche pour les champs */
+}
+/* stule de la saisie text */
+.generateur-kdrama input[type="text"] {
+    width: calc(100% - 20px); /* Ajuste la largeur pour compenser le padding */
+    padding: 10px; 
+    margin-top: 5px; /* Espacement au-dessus du champ de texte */
+    border: 1px solid #FFE2D4; 
+    border-radius: 20px; 
+}
+
+/* Styles pour les boutons radio et leurs étiquettes */
+.generateur-kdrama .gridGenre {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adaptation automatique des éléments */
+    gap: 10px;
+    justify-items: start; /* Alignement à gauche pour les boutons radio */
+}
+
+.generateur-kdrama .radio-container {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espace entre le bouton radio et son étiquette */
+}
+
+/* Styles pour le bouton de soumission */
+.generateur-kdrama #bouton_ouvrir {
+    background-color: #FFE2D4; 
+    color: black;
+    padding: 15px 30px; 
+    border-radius: 25px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    display: block; /* Affichage en bloc pour permettre le centrage */
+    margin: 20px auto; 
+    border: none;
+}
+.generateur-kdrama #bouton_ouvrir:hover {
+    background-color: #555; 
+    color: white; 
+}
+
+
+                                                                    /* STYLE DE LA PAGE POPUP */
+/* style de base pour le popup */
+.popup_page {
+    background-color: #fff; 
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    max-width: 600px; 
+    margin: 50px auto; /* marge pour centrer le popup */
+    width: 90%; 
+}
+
+/* style pour les titres dans le popup */
+.popup_page h1, .popup_page h2, .popup_page h3 {
+    color: #333; 
+}
+.popup_page h1 span, .popup_page h2 span {
+    color: black; 
+}
+
+/* stile pour l'image du kdrama dans le popup */
+.popup_page #kdramaImage {
+    width: 100%; /* utilise pleinement l'espace disponible */
+    height: auto; 
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* stile pour les etiquettes */
+.popup_page label {
+    font-size: 16px; 
+    color: #555;
+}
+
+/* stile pour le menu déroulant */
+.popup_page select {
+    width: 100%; /* largeur complète pour utiliser l'espace */
+    padding: 8px; 
+    margin-top: 10px; /* marge au-dessus pour séparer des éléments */
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    background-color: #fafafa; 
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); 
+    font-size: 16px; 
+}
+
+/* stile pour le bouton d'action */
+.popup_page button {
+    display: block; 
+    width: auto; /* largeur automatique selon le contenu */
+    background-color: #FFE2D4; 
+    color: black; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    margin-top: 20px; /* espace avant le bouton */
+    cursor: pointer; 
+    font-size: 16px; 
+    align-self: center;
+}
+
+/* stile pour le bouton d'action au survol */
+.popup_page button:hover {
+    background-color: #555; 
+    color: white; 
+}
+
+
+                                                                        /* PAGE DE CONNECTION */    
+
+/* mise en page de la conection */
+.page_connection {
+    display: flex; /* utilise flexbox pour centrer le formulaire */
+    justify-content: center; /* centre horizontalement */
+    align-items: center; /* centre verticalement */
+    min-height: 80vh; /* assure que ça prend au moin 80% de la hauteur de l'écran */
+    padding: 20px; /* pour ne pas toucher les bords */
+}
+
+/* style du conteneur de conection */
+.page_connection .connection {
+    background-color: white; 
+    padding: 20px;
+    border-radius: 25px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    width: 300px; 
+}
+
+/* stile des étiquetes et champs du formulaire */
+.page_connection .connection form label, .page_connection .connection form input {
+    display: block; /* chaque élément sur sa propre ligne */
+    width: 100%; 
+    margin-bottom: 10px; 
+}
+
+/* style spécifique pour les entrés email et mot de passe */
+.page_connection .connection form input[type="email"], .page_connection .connection form input[type="password"] {
+    padding: 10px; /* un peu plus d'espace à l'intérieur pour la saisie */
+    border: 1px solid #ddd; 
+    border-radius: 15px; 
+    box-sizing: border-box; /* s'assure que la largeur inclu la bordure et le padding */
+}
+
+/* stile pour le bouton d'envoie */
+.page_connection .connection form input[type="submit"] {
+    background-color: #FFE2D4; 
+    color: black; 
+    padding: 10px;
+    border: none; 
+    border-radius: 15px; 
+    cursor: pointer; 
+}
+
+/* style pour le bouton d'envoie au hover */
+.page_connection .connection form input[type="submit"]:hover {
+    background-color: #555; 
+    color: white; 
+}
+                                                             
+
+
+                                                    /* STYLE POUR ESPACE MEMBRE*/
+
+/* style global du conteneur */
+.container {
+    max-width: 760px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* boutons et inputs */
+.espace_membre .container button, input[type="submit"] {
+    background-color: #FFE2D4;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin: 2% 0px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.espace_membre .container button:hover, input[type="submit"]:hover {
+    background-color: #555;
+    color: white;
+}
+
+/* top de l'espace membre */
+.espace_membre .container .top_membre {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* image de profil */
+.espace_membre .container .profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+/* infos perso, avis et watchlist */
+.espace_membre .container .infos_perso,
+.espace_membre .container .avis,
+.espace_membre .container .watchList {
+    margin: 5% 0%;
+}
+
+/* input text et email */
+.espace_membre .container input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 2px solid #FFE2D4;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+/* genre prefere dans infos perso */
+.espace_membre .container .infos_perso fieldset.genre_pref > * {
+    margin: 2%; 
+}
+
+/* articles d'avis et éléments de watchlist */
+.avis article, .watchList li {
+    background-color: #FFF;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* bouton de deconnexion */
+.deconnexion {
+    display: block;
+    width: max-content;
+    margin: 20px auto;
+    text-align: center;
+    color: #f7cbb6;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.deconnexion:hover {
+    text-decoration: underline;
+}
+
+
+
+/* FOOTER */
+
+footer {
+    background-color: #555;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.footer-content a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-content p {
+    margin-top: 10px;
+}
+
